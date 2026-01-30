@@ -8,7 +8,8 @@ import Link from "next/link";
 
 export default function ProductDetails() {
 
-    const { id } = useParams();
+     const params = useParams(); // useParams returns an object
+    const id = params?.id;      // safe access
 
     const [product, setproduct] = useState(null)
 
@@ -25,6 +26,7 @@ export default function ProductDetails() {
         getProduct();
     }, [id]);
 
+ if (!product) return <p>Loading...</p>;
 
     return (
         <>
